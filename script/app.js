@@ -1,4 +1,4 @@
-// app.js
+
 import { renderLogin, renderHome } from './components.js';
 
 function router() {

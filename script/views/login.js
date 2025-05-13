@@ -18,9 +18,9 @@ export function renderLogin() {
   const errorMsg = document.getElementById('login-error');
 
   const validGuests = {
-    "apple123": "Robin",
-    "beetlejuice": "Lio",
-    "haunt28": "Aunt Juli"
+    "kj8": "Robin",
+    "kj5": "Lio",
+    "ClassFinal": "Class final"
   };
 
   loginBtn.onclick = () => {
