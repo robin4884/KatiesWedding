@@ -16,19 +16,18 @@ function isAuthenticated() {
 function router() {
   const hash = window.location.hash || '#home';
 
-  // 👇 Force to login if not authenticated
   if (!isAuthenticated()) {
     if (hash !== '#login') {
-      window.location.hash = '#login'; // Triggers rerender to login view
+      window.location.hash = '#login';
       return;
     }
-    renderLogin();
-    return;
+    return renderLogin(); // force login if not authenticated
   }
 
   const view = routes[hash] || renderHome;
   view();
 }
+
 
 // 👇 Ensure router runs immediately on page load AND after any hash change
 window.addEventListener('hashchange', router);
