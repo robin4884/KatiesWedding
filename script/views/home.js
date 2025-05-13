@@ -1,17 +1,14 @@
 export function renderHome() {
+  const name = localStorage.getItem('guestName') || 'guest';
   const app = document.getElementById('app');
   app.innerHTML = `
-    <h1>Welcome to Robin & Lio's Wedding</h1>
-    <p>You're invited to join us for a magical, romantic, and slightly spooky celebration!</p>
-    <p>⏳ Countdown coming soon...</p>
-    <nav>
-      <a href="#rsvp">RSVP</a> |
-      <a href="#schedule">Schedule</a> |
-      <a href="#story">Our Story</a> |
-      <a href="#gallery">Gallery</a> |
-      <a href="#registry">Registry</a> |
-      <a href="#crew">Wedding Crew</a> |
-      <a href="#live">Live</a>
-    </nav>
+    <h1>Welcome, ${name}!</h1>
+    <p>You are now invited to the wedding website 🎉</p>
+    <a href="#login" onclick="logout()">Logout</a>
   `;
 }
+
+window.logout = function () {
+  localStorage.clear();
+  window.location.hash = '#login';
+};
