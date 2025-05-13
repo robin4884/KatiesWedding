@@ -12,13 +12,16 @@ body {
   padding-top: 80px;
 }
 
-.wrapper {
+.wrapper,
+.top-bar > .wrapper {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-/* Sticky nav bar */
+/* ================================
+   NAVIGATION BAR
+================================= */
 .top-bar {
   position: fixed;
   top: 0;
@@ -26,15 +29,6 @@ body {
   background-color: #f8e9f0;
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
   z-index: 10;
-}
-
-.top-bar > .wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0.8rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .main-nav {
@@ -73,7 +67,9 @@ body {
   background: #b47ea5;
 }
 
-/* Hero section */
+/* ================================
+   HERO
+================================= */
 .hero {
   text-align: center;
   padding: 4rem 1rem 2rem;
@@ -96,7 +92,9 @@ body {
   animation: fadeIn 1.4s ease;
 }
 
-/* Countdown */
+/* ================================
+   COUNTDOWN
+================================= */
 .countdown {
   text-align: center;
   margin: 2rem auto;
@@ -104,7 +102,9 @@ body {
   color: #5b3750;
 }
 
-/* Story section */
+/* ================================
+   OUR STORY SECTION
+================================= */
 .story-section {
   display: flex;
   flex-wrap: wrap;
@@ -131,7 +131,9 @@ body {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-/* Petal animation */
+/* ================================
+   PETAL ANIMATION
+================================= */
 #petal-container {
   position: fixed;
   top: 0;
@@ -165,7 +167,9 @@ body {
   }
 }
 
-/* Fade-on-scroll animation */
+/* ================================
+   FADE ANIMATION
+================================= */
 .fade-on-scroll {
   opacity: 0;
   transform: translateY(30px);
@@ -177,7 +181,6 @@ body {
   transform: translateY(0);
 }
 
-/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
@@ -188,7 +191,9 @@ body {
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
+/* ================================
+   RESPONSIVE
+================================= */
 @media (max-width: 768px) {
   .main-title {
     font-size: 3rem;
@@ -202,4 +207,69 @@ body {
   .story-image img {
     max-width: 90%;
   }
+}
+
+/* ================================
+   LOGIN PAGE
+================================= */
+.login-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #fdf4f8, #fff6fa);
+}
+
+.login-box {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.login-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  color: #b47ea5;
+  margin-bottom: 0.5rem;
+}
+
+.login-sub {
+  font-size: 1rem;
+  color: #5b3750;
+  margin-bottom: 1.5rem;
+}
+
+.login-box input {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 1rem;
+  outline-color: #b47ea5;
+}
+
+.login-box button {
+  background-color: #8a4f6d;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-box button:hover {
+  background-color: #b47ea5;
+}
+
+.error-msg {
+  margin-top: 1rem;
+  color: crimson;
+  font-size: 0.9rem;
 }

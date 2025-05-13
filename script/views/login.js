@@ -1,33 +1,36 @@
 export function renderLogin() {
   const app = document.getElementById('app');
   app.innerHTML = `
-    <h2>Enter Your Wedding Invite Code</h2>
-    <form id="login-form">
-      <input type="text" id="code" placeholder="Enter invite code" required />
-      <button type="submit">Enter</button>
-    </form>
-    <p id="error" style="color:red; display:none;">Invalid code. Please try again.</p>
+    <section class="login-wrapper">
+      <div class="login-box">
+        <h1 class="login-title">Welcome to Our Wedding</h1>
+        <p class="login-sub">Enter your special invite code to continue ✨</p>
+        <input id="invite-code" type="text" placeholder="Enter code..." />
+        <button id="login-btn">Continue</button>
+        <p id="login-error" class="error-msg" style="display:none;">Invalid code. Please try again.</p>
+      </div>
+    </section>
   `;
 
+  const loginBtn = document.getElementById('login-btn');
+  const codeInput = document.getElementById('invite-code');
+  const errorMsg = document.getElementById('login-error');
+
   const validGuests = {
-    'magic123': "Robin's Aunt Juli",
-    'balloon456': "Lio's Friend Hugo",
-    'ghost789': "Robin's Mom"
+    "apple123": "Robin",
+    "beetlejuice": "Lio",
+    "haunt28": "Aunt Juli"
   };
 
-  const form = document.getElementById('login-form');
-  const error = document.getElementById('error');
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const code = document.getElementById('code').value.trim().toLowerCase();
-
+  loginBtn.onclick = () => {
+    const code = codeInput.value.trim().toLowerCase();
     if (validGuests[code]) {
       localStorage.setItem('auth', 'true');
       localStorage.setItem('guestName', validGuests[code]);
       window.location.hash = '#home';
     } else {
-      error.style.display = 'block';
+      errorMsg.style.display = 'block';
     }
-  });
+  };
 }
+
