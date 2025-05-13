@@ -12,9 +12,9 @@ export function renderLogin() {
   `;
 
   const validGuests = {
-    'magic123': 'Robin\'s Aunt Juli',
-    'balloon456': 'Lio\'s Friend Hugo',
-    'ghost789': 'Robin\'s Mom'
+    'magic123': "Robin's Aunt Juli",
+    'balloon456': "Lio's Friend Hugo",
+    'ghost789': "Robin's Mom"
   };
 
   const form = document.getElementById('login-form');
