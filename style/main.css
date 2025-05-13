@@ -1,42 +1,103 @@
-:root {
-  --bg: #f9f4f1;
-  --text: #222;
-  --accent: #bb86fc;
-}
-
-[data-theme="dark"] {
-  --bg: #1a1a1a;
-  --text: #f0f0f0;
-  --accent: #ff79c6;
-}
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lora&display=swap');
 
 body {
   margin: 0;
-  font-family: 'Georgia', serif;
-  background-color: var(--bg);
-  color: var(--text);
-  transition: background-color 0.3s, color 0.3s;
+  padding: 0;
+  font-family: 'Lora', serif;
+  background: #fdf4f8;
+  color: #3b1f2b;
 }
 
-#app {
-  padding: 2rem;
+.hero {
+  text-align: center;
+  padding: 3rem 1rem 1rem;
 }
 
-button.theme-toggle {
-  position: fixed;
-  top: 10px;
-  right: 10px;
+.main-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.5rem;
+  margin: 0;
+  color: #b47ea5;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.logout-button {
-  background-color: transparent;
-  border: 1px solid var(--accent);
-  color: var(--text);
-  padding: 5px 10px;
+.sub-title {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  color: #5b3750;
+}
+
+.countdown {
+  text-align: center;
+  margin: 2rem auto;
+  font-size: 1.25rem;
+}
+
+.story-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.story-text {
+  max-width: 500px;
+}
+
+.story-text h2 {
+  font-size: 2rem;
+  color: #8a4f6d;
+  margin-bottom: 1rem;
+}
+
+.story-image img {
+  max-width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.main-nav {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #8a4f6d;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.main-nav a:hover {
+  color: #b47ea5;
+}
+
+.logout-btn {
+  display: block;
+  margin: 2rem auto;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #8a4f6d;
+  color: white;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-.logout-button:hover {
-  background-color: var(--accent);
-  color: white;
+.logout-btn:hover {
+  background: #b47ea5;
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: fadeInRight 1s ease-out forwards;
+}
+
+@keyframes fadeInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

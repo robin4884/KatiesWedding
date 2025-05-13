@@ -2,29 +2,38 @@ export function renderHome() {
   const app = document.getElementById('app');
 
   app.innerHTML = `
-    <header>
-      <h1>Robin & Lio's Wedding</h1>
-      <p>You're invited to a whimsical, romantic, and slightly spooky celebration!</p>
-    </header>
+    <section class="hero">
+      <h1 class="main-title">Welcome</h1>
+      <p class="sub-title">You're invited to a whimsical, romantic, and slightly spooky celebration</p>
+    </section>
 
-    <section id="countdown">
+    <section class="countdown">
       <h3>Countdown to the Big Day</h3>
       <p id="timer">Loading...</p>
     </section>
 
-    <nav style="margin-top: 20px;">
-      <a href="#rsvp">RSVP</a> |
-      <a href="#schedule">Schedule</a> |
-      <a href="#story">Our Story</a> |
-      <a href="#gallery">Gallery</a> |
-      <a href="#registry">Registry</a> |
-      <a href="#crew">Wedding Crew</a> |
+    <section class="story-section fade-in-right">
+      <div class="story-text">
+        <h2>Their Story</h2>
+        <p>Once upon a time, two beautiful souls found each other in this vast, chaotic world...</p>
+        <p>They laughed, cried, grew, and now they invite you to join their next chapter.</p>
+      </div>
+      <div class="story-image">
+        <img src="/assets/images/Pale-pink-and-purple-bouquet.jpg" alt="Placeholder bouquet">
+      </div>
+    </section>
+
+    <nav class="main-nav">
+      <a href="#rsvp">RSVP</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#story">Our Story</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#registry">Registry</a>
+      <a href="#crew">Wedding Crew</a>
       <a href="#live">Live</a>
     </nav>
 
-    <div style="margin-top: 20px;">
-      <button id="logout">🚪 Logout</button>
-    </div>
+    <button id="logout" class="logout-btn">🚪 Logout</button>
   `;
 
   document.getElementById('logout').onclick = () => {
@@ -32,8 +41,7 @@ export function renderHome() {
     window.location.hash = '#login';
   };
 
-  // Optional: Countdown logic (set your date here)
-  const weddingDate = new Date('2028-10-14T15:00:00'); // Update to your actual date/time
+  const weddingDate = new Date('2028-10-14T15:00:00');
   const timer = document.getElementById('timer');
 
   function updateCountdown() {
