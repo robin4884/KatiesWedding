@@ -23,15 +23,20 @@ export function renderHome() {
       </div>
     </section>
 
-    <nav class="main-nav">
-      <a href="#rsvp">RSVP</a>
-      <a href="#schedule">Schedule</a>
-      <a href="#story">Our Story</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#registry">Registry</a>
-      <a href="#crew">Wedding Crew</a>
-      <a href="#live">Live</a>
-    </nav>
+    <header class="top-bar">
+  <nav class="main-nav">
+    <a href="#home">Home</a>
+    <a href="#rsvp">RSVP</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#story">Our Story</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#registry">Registry</a>
+    <a href="#crew">Wedding Crew</a>
+    <a href="#live">Live</a>
+  </nav>
+  <button id="logout" class="logout-btn">Logout</button>
+</header>
+
 
     <button id="logout" class="logout-btn">🚪 Logout</button>
   `;
