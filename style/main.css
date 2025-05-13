@@ -27,3 +27,16 @@ button.theme-toggle {
   top: 10px;
   right: 10px;
 }
+
+.logout-button {
+  background-color: transparent;
+  border: 1px solid var(--accent);
+  color: var(--text);
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: var(--accent);
+  color: white;
+}
