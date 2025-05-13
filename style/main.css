@@ -1,0 +1,29 @@
+:root {
+  --bg: #f9f4f1;
+  --text: #222;
+  --accent: #bb86fc;
+}
+
+[data-theme="dark"] {
+  --bg: #1a1a1a;
+  --text: #f0f0f0;
+  --accent: #ff79c6;
+}
+
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#app {
+  padding: 2rem;
+}
+
+button.theme-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
