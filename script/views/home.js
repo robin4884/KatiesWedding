@@ -1,53 +1,179 @@
 export function renderHome() {
   const app = document.getElementById('app');
 
-  // Add this inside renderHome()
-app.innerHTML += `
-  <section id="gallery" class="carousel-section">
-    <h2 class="section-title">Gallery</h2>
-    <div class="carousel-container">
-      <button class="carousel-btn left">&#10094;</button>
-      <div class="carousel-track">
-        <img src="assets/images/photo1.jpg" alt="Photo 1" />
-        <img src="assets/images/photo2.jpg" alt="Photo 2" />
-        <img src="assets/images/photo3.jpg" alt="Photo 3" />
+  app.innerHTML = `
+    <header class="top-bar">
+      <div class="wrapper">
+        <nav class="main-nav">
+          <a href="#home">Home</a>
+          <a href="#rsvp">RSVP</a>
+          <a href="#schedule">Schedule</a>
+          <a href="#story">Our Story</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#registry">Registry</a>
+          <a href="#crew">Wedding Crew</a>
+          <a href="#live">Live</a>
+        </nav>
+        <button id="logout" class="logout-btn">Logout</button>
       </div>
-      <button class="carousel-btn right">&#10095;</button>
-    </div>
-  </section>
-`;
+    </header>
 
-// Carousel JS
-let index = 0;
-const track = document.querySelector('.carousel-track');
-const leftBtn = document.querySelector('.carousel-btn.left');
-const rightBtn = document.querySelector('.carousel-btn.right');
-const slides = document.querySelectorAll('.carousel-track img');
+    <main class="wrapper">
+      <section class="hero" id="home">
+        <h1 class="main-title">Welcome</h1>
+        <p class="sub-title">You're invited to a whimsical, romantic, and slightly spooky celebration</p>
+      </section>
 
-function updateCarousel() {
-  index = (index + slides.length) % slides.length;
-  track.style.transform = `translateX(-${index * 100}%)`;
-}
+      <section class="countdown">
+        <h3>Countdown to the Big Day</h3>
+        <p id="timer">Loading...</p>
+      </section>
 
-leftBtn.onclick = () => {
-  index--;
-  updateCarousel();
-};
+      <section class="story-section fade-on-scroll" id="story">
+        <div class="story-text">
+          <h2>Their Story</h2>
+          <p>Once upon a time, two beautiful souls found each other in this vast, chaotic world...</p>
+          <p>They laughed, cried, grew, and now they invite you to join their next chapter.</p>
+        </div>
+        <div class="story-image">
+          <img src="assets/images/Pale-pink-and-purple-bouquet.jpg" alt="Placeholder bouquet">
+        </div>
+      </section>
 
-rightBtn.onclick = () => {
-  index++;
-  updateCarousel();
-};
+      <section id="gallery" class="carousel-section">
+        <h2 class="section-title">Gallery</h2>
+        <div class="carousel-container">
+          <button class="carousel-btn left">&#10094;</button>
+          <div class="carousel-track">
+            <img src="assets/images/photo1.jpg" alt="Photo 1" />
+            <img src="assets/images/photo2.jpg" alt="Photo 2" />
+            <img src="assets/images/photo3.jpg" alt="Photo 3" />
+          </div>
+          <button class="carousel-btn right">&#10095;</button>
+        </div>
+      </section>
+    </main>
 
-// Smooth scroll for nav links
-document.querySelectorAll('.main-nav a').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const href = this.getAttribute('href');
-    const section = document.querySelector(href);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+    <div id="petal-container"></div>
+  `;
+
+  document.getElementById('logout').onclick = () => {
+    localStorage.clear();
+    window.location.hash = '#login';
+  };
+
+  const weddingDate = new Date('2028-10-14T15:00:00');
+  const timer = document.getElementById('timer');
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = weddingDate - now;
+
+    if (diff <= 0) {
+      timer.textContent = "It's Wedding Time! 💍🎉";
+      return;
     }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    timer.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-on-scroll').forEach(el => observer.observe(el));
+
+  let index = 0;
+  const track = document.querySelector('.carousel-track');
+  const leftBtn = document.querySelector('.carousel-btn.left');
+  const rightBtn = document.querySelector('.carousel-btn.right');
+  const slides = document.querySelectorAll('.carousel-track img');
+
+  function updateCarousel() {
+    index = (index + slides.length) % slides.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  leftBtn.onclick = () => {
+    index--;
+    updateCarousel();
+  };
+
+  rightBtn.onclick = () => {
+    index++;
+    updateCarousel();
+  };
+
+  document.querySelectorAll('.main-nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      const section = document.querySelector(href);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
   });
-});
 }
+
+export function renderLogin() {
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <section class="login-wrapper">
+      <div class="login-box">
+        <h1 class="login-title">Welcome to Our Wedding</h1>
+        <p class="login-sub">Enter your invite code to continue</p>
+        <input id="invite-code" type="text" placeholder="Enter code..." />
+        <button id="login-btn">Continue</button>
+        <p id="login-error" class="error-msg" style="display:none;">Invalid code. Please try again.</p>
+      </div>
+    </section>
+  `;
+
+  const loginBtn = document.getElementById('login-btn');
+  const codeInput = document.getElementById('invite-code');
+  const errorMsg = document.getElementById('login-error');
+
+  const validGuests = {
+    "apple123": "Robin",
+    "beetlejuice": "Lio",
+    "haunt28": "Aunt Juli"
+  };
+
+  loginBtn.onclick = () => {
+    const code = codeInput.value.trim().toLowerCase();
+    if (validGuests[code]) {
+      localStorage.setItem('auth', 'true');
+      localStorage.setItem('guestName', validGuests[code]);
+      window.location.hash = '#home';
+    } else {
+      errorMsg.style.display = 'block';
+    }
+  };
+}
+
+export function router() {
+  const hash = window.location.hash || '#login';
+  const isAuth = localStorage.getItem('auth');
+
+  if (hash === '#home' && isAuth) {
+    renderHome();
+  } else {
+    renderLogin();
+  }
+}
+
+window.addEventListener('load', router);
+window.addEventListener('hashchange', router);
