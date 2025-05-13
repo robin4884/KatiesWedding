@@ -1,8 +1,10 @@
 import { renderLogin } from './views/login.js';
 import { renderHome } from './views/home.js';
+import { renderRSVP } from './views/rsvp.js';
 
 const routes = {
   '#home': renderHome,
+  '#rsvp': renderRSVP,
 };
 
 function isAuthenticated() {

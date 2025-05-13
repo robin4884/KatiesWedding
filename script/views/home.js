@@ -6,14 +6,14 @@ export function renderHome() {
     <h1>Welcome, ${guestName}!</h1>
     <p>We're so glad you could join us for this special occasion 🎉</p>
 
-    <button id="enter-site">Enter the Site</button>
-    <button id="logout">Logout</button>
-  `;
+    <div style="margin-top: 20px;">
+      <a href="#rsvp" id="enter-site" style="padding: 10px 20px; background: black; color: white; text-decoration: none; border-radius: 6px;">Enter the Site</a>
+    </div>
 
-  document.getElementById('enter-site').onclick = () => {
-    alert("You can now build your next page here — like RSVP or Schedule!");
-    // You can redirect to #rsvp, #schedule, etc. when they're ready
-  };
+    <div style="margin-top: 10px;">
+      <button id="logout" style="padding: 5px 10px;">Logout</button>
+    </div>
+  `;
 
   document.getElementById('logout').onclick = () => {
     localStorage.clear();
