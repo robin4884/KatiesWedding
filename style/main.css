@@ -24,12 +24,17 @@ body {
   top: 0;
   width: 100%;
   background-color: #f8e9f0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  z-index: 10;
+}
+
+.top-bar > .wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
   padding: 0.8rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-  z-index: 10;
 }
 
 .main-nav {

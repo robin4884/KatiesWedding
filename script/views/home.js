@@ -3,17 +3,19 @@ export function renderHome() {
 
   app.innerHTML = `
     <header class="top-bar">
-      <nav class="main-nav">
-        <a href="#home">Home</a>
-        <a href="#rsvp">RSVP</a>
-        <a href="#schedule">Schedule</a>
-        <a href="#story">Our Story</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#registry">Registry</a>
-        <a href="#crew">Wedding Crew</a>
-        <a href="#live">Live</a>
-      </nav>
-      <button id="logout" class="logout-btn">Logout</button>
+      <div class="wrapper">
+        <nav class="main-nav">
+          <a href="#home">Home</a>
+          <a href="#rsvp">RSVP</a>
+          <a href="#schedule">Schedule</a>
+          <a href="#story">Our Story</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#registry">Registry</a>
+          <a href="#crew">Wedding Crew</a>
+          <a href="#live">Live</a>
+        </nav>
+        <button id="logout" class="logout-btn">Logout</button>
+      </div>
     </header>
 
     <main class="wrapper">
