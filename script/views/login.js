@@ -9,29 +9,25 @@ export function renderLogin() {
     <p id="error" style="color:red; display:none;">Invalid code. Please try again.</p>
   `;
 
-  // 💬 Add or change codes + names here
   const validGuests = {
-    'KJ1': "Robin - Maid of Honor",
-    'KJ2': "Katie - Bride",
-    'KJ3': "Julie - Justins's Mom",
-    'KJ4': "Justin - Grom",
-    'ClassFinal': "JohnM - Profesor",
-    // Add more later - delete Class Final later
+    'testcode': "Robin",
+    'magic123': "Aunt Juli"
   };
 
   const form = document.getElementById('login-form');
   const error = document.getElementById('error');
 
   form.onsubmit = (e) => {
-  e.preventDefault();
-  const code = form.querySelector('input').value.trim().toLowerCase();
+    e.preventDefault();
+    const code = form.querySelector('input').value.trim().toLowerCase();
+    console.log("Entered code:", code); // 🔍 for debugging
 
-  if (validGuests[code]) {
-    localStorage.setItem('auth', 'true');
-    localStorage.setItem('guestName', validGuests[code]);
-    window.location.hash = '#home';
-  } else {
-    error.style.display = 'block';
-  }
-};
+    if (validGuests[code]) {
+      localStorage.setItem('auth', 'true');
+      localStorage.setItem('guestName', validGuests[code]);
+      window.location.hash = '#home';
+    } else {
+      error.style.display = 'block';
+    }
+  };
 }
