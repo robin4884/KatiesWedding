@@ -23,15 +23,15 @@ export function renderLogin() {
   const error = document.getElementById('error');
 
   form.onsubmit = (e) => {
-    e.preventDefault();
-    const code = form.querySelector('input').value.trim().toLowerCase();
+  e.preventDefault();
+  const code = form.querySelector('input').value.trim().toLowerCase();
 
-    if (validGuests[code]) {
-      localStorage.setItem('auth', 'true');
-      localStorage.setItem('guestName', validGuests[code]); // save name for greeting
-      window.location.hash = '#home';
-    } else {
-      error.style.display = 'block';
-    }
-  };
+  if (validGuests[code]) {
+    localStorage.setItem('auth', 'true');
+    localStorage.setItem('guestName', validGuests[code]);
+    window.location.hash = '#home';
+  } else {
+    error.style.display = 'block';
+  }
+};
 }
