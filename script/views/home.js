@@ -16,37 +16,37 @@ export function renderHome() {
       <button id="logout" class="logout-btn">Logout</button>
     </header>
 
-    <section class="hero">
-      <h1 class="main-title">Welcome</h1>
-      <p class="sub-title">You're invited to a whimsical, romantic, and slightly spooky celebration</p>
-    </section>
+    <main class="wrapper">
+      <section class="hero">
+        <h1 class="main-title">Welcome</h1>
+        <p class="sub-title">You're invited to a whimsical, romantic, and slightly spooky celebration</p>
+      </section>
 
-    <section class="countdown">
-      <h3>Countdown to the Big Day</h3>
-      <p id="timer">Loading...</p>
-    </section>
+      <section class="countdown">
+        <h3>Countdown to the Big Day</h3>
+        <p id="timer">Loading...</p>
+      </section>
 
-    <section class="story-section fade-on-scroll">
-      <div class="story-text">
-        <h2>Their Story</h2>
-        <p>Once upon a time, two beautiful souls found each other in this vast, chaotic world...</p>
-        <p>They laughed, cried, grew, and now they invite you to join their next chapter.</p>
-      </div>
-      <div class="story-image">
-        <img src="assets/images/Pale-pink-and-purple-bouquet.jpg" alt="Placeholder bouquet">
-      </div>
-    </section>
+      <section class="story-section fade-on-scroll">
+        <div class="story-text">
+          <h2>Their Story</h2>
+          <p>Once upon a time, two beautiful souls found each other in this vast, chaotic world...</p>
+          <p>They laughed, cried, grew, and now they invite you to join their next chapter.</p>
+        </div>
+        <div class="story-image">
+          <img src="assets/images/Pale-pink-and-purple-bouquet.jpg" alt="Placeholder bouquet">
+        </div>
+      </section>
+    </main>
 
     <div id="petal-container"></div>
   `;
 
-  // Logout
   document.getElementById('logout').onclick = () => {
     localStorage.clear();
     window.location.hash = '#login';
   };
 
-  // Countdown
   const weddingDate = new Date('2028-10-14T15:00:00');
   const timer = document.getElementById('timer');
 
@@ -70,7 +70,6 @@ export function renderHome() {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // Scroll fade animation
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -81,7 +80,6 @@ export function renderHome() {
 
   document.querySelectorAll('.fade-on-scroll').forEach(el => observer.observe(el));
 
-  // Floating flower petals
   function createPetal() {
     const petal = document.createElement('div');
     petal.classList.add('petal');
