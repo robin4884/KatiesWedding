@@ -1,30 +1,17 @@
-import { renderLogin } from './views/login.js';
-import { renderHome } from './views/home.js';
-import { renderRSVP } from './views/rsvp.js';
-
-const routes = {
-  '#home': renderHome,
-  '#rsvp': renderRSVP,
-};
-
-function isAuthenticated() {
-  return localStorage.getItem('auth') === 'true';
-}
+// app.js
+import { renderLogin, renderHome } from './components.js';
 
 function router() {
-  const hash = window.location.hash || '#home';
+  const hash = window.location.hash || '#login';
+  const isAuth = localStorage.getItem('auth');
 
-  if (!isAuthenticated()) {
-    if (hash !== '#login') {
-      window.location.hash = '#login';
-      return;
-    }
-    return renderLogin();
+  if (hash === '#home' && isAuth) {
+    renderHome();
+  } else {
+    renderLogin();
   }
-
-  const view = routes[hash] || renderHome;
-  view();
 }
 
-window.addEventListener('hashchange', router);
 window.addEventListener('load', router);
+window.addEventListener('hashchange', router);
+
