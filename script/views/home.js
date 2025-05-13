@@ -19,7 +19,7 @@ export function renderHome() {
         <p>They laughed, cried, grew, and now they invite you to join their next chapter.</p>
       </div>
       <div class="story-image">
-        <img src="/assets/images/Pale-pink-and-purple-bouquet.jpg" alt="Placeholder bouquet">
+        <img src="assets/images/Pale-pink-and-purple-bouquet.jpg" alt="Placeholder bouquet">
       </div>
     </section>
 
