@@ -2,6 +2,20 @@ export function renderHome() {
   const app = document.getElementById('app');
 
   app.innerHTML = `
+    <header class="top-bar">
+      <nav class="main-nav">
+        <a href="#home">Home</a>
+        <a href="#rsvp">RSVP</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#story">Our Story</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#registry">Registry</a>
+        <a href="#crew">Wedding Crew</a>
+        <a href="#live">Live</a>
+      </nav>
+      <button id="logout" class="logout-btn">Logout</button>
+    </header>
+
     <section class="hero">
       <h1 class="main-title">Welcome</h1>
       <p class="sub-title">You're invited to a whimsical, romantic, and slightly spooky celebration</p>
@@ -12,7 +26,7 @@ export function renderHome() {
       <p id="timer">Loading...</p>
     </section>
 
-    <section class="story-section fade-in-right">
+    <section class="story-section fade-on-scroll">
       <div class="story-text">
         <h2>Their Story</h2>
         <p>Once upon a time, two beautiful souls found each other in this vast, chaotic world...</p>
@@ -23,29 +37,18 @@ export function renderHome() {
       </div>
     </section>
 
-    <header class="top-bar">
-  <nav class="main-nav">
-    <a href="#home">Home</a>
-    <a href="#rsvp">RSVP</a>
-    <a href="#schedule">Schedule</a>
-    <a href="#story">Our Story</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#registry">Registry</a>
-    <a href="#crew">Wedding Crew</a>
-    <a href="#live">Live</a>
-  </nav>
-  <button id="logout" class="logout-btn">Logout</button>
-</header>
+    </section>
 
-
-    <button id="logout" class="logout-btn">🚪 Logout</button>
+<div id="petal-container"></div>
   `;
 
+  // Logout button functionality
   document.getElementById('logout').onclick = () => {
     localStorage.clear();
     window.location.hash = '#login';
   };
 
+  // Countdown logic
   const weddingDate = new Date('2028-10-14T15:00:00');
   const timer = document.getElementById('timer');
 
@@ -68,4 +71,32 @@ export function renderHome() {
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  // Scroll fade animation support
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-on-scroll').forEach(el => observer.observe(el));
+
+  // 🌸 Floating petals animation
+function createPetal() {
+  const petal = document.createElement('div');
+  petal.classList.add('petal');
+  petal.style.left = Math.random() * 100 + 'vw';
+  petal.style.animationDuration = 3 + Math.random() * 5 + 's';
+  document.getElementById('petal-container').appendChild(petal);
+
+  setTimeout(() => {
+    petal.remove();
+  }, 8000);
+}
+
+// Generate petals every 300ms
+setInterval(createPetal, 300);
+
 }
